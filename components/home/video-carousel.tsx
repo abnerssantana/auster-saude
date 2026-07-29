@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useState } from "react";
 import { Play } from "lucide-react";
 import {
@@ -16,7 +16,15 @@ import { VIDEO_DEPOIMENTOS } from "@/lib/content";
  * Facade do YouTube: mostra a thumbnail local e só carrega o iframe no clique.
  * Evita ~700 kB de scripts de terceiros no carregamento inicial.
  */
-function VideoCard({ id, name }: { id: string; name: string }) {
+function VideoCard({
+  id,
+  name,
+  thumb,
+}: {
+  id: string;
+  name: string;
+  thumb: StaticImageData;
+}) {
   const [playing, setPlaying] = useState(false);
 
   if (playing) {
@@ -39,7 +47,7 @@ function VideoCard({ id, name }: { id: string; name: string }) {
       className="group relative block aspect-video w-full overflow-hidden rounded-[20px]"
     >
       <Image
-        src={`/images/videos/${id}.jpg`}
+        src={thumb}
         alt=""
         fill
         sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
@@ -68,7 +76,11 @@ export function VideoCarousel() {
             className="pl-4 sm:basis-1/2 lg:basis-1/3"
           >
             <div className="flex flex-col gap-3">
-              <VideoCard id={video.id} name={video.name} />
+              <VideoCard
+                id={video.id}
+                name={video.name}
+                thumb={video.thumb}
+              />
               <div className="text-center sm:text-left">
                 <h3 className="text-[20px] text-cream sm:text-[22px]">
                   {video.name}

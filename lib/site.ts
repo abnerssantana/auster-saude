@@ -6,6 +6,18 @@ export const SITE_NAME = "Auster Saúde";
 export const SITE_DESCRIPTION =
   "Contabilidade especializada em médicos: planejamento tributário, abertura de PJ, credenciamentos e gestão contábil consultiva. Atendimento humano, ágil e transparente.";
 
+/*
+ * Base de Open Graph compartilhada. Definir `openGraph` numa página substitui
+ * o objeto do layout inteiro (não faz merge por chave), então cada página
+ * espalha isto e só acrescenta a própria `url`. Título e descrição ficam de
+ * fora de propósito: o Next herda os da página quando não estão declarados.
+ */
+export const OPEN_GRAPH_BASE = {
+  type: "website",
+  locale: "pt_BR",
+  siteName: SITE_NAME,
+} as const;
+
 const WHATSAPP_PHONE = "5547996114584";
 const WHATSAPP_MESSAGE = "Olá estou entrando em contato através do site";
 

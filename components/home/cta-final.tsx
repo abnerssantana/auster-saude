@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CtaWhatsapp } from "@/components/cta-whatsapp";
 import { CTA_FINAL } from "@/lib/content";
+import corpoClinico from "@/public/images/fotos-corpo-clinico-grupo-auster.avif";
 
 export function CtaFinal() {
   return (
@@ -31,10 +32,8 @@ export function CtaFinal() {
         </div>
 
         <Image
-          src="/images/fotos-corpo-clinico-grupo-auster.png"
+          src={corpoClinico}
           alt="Corpo clínico atendido pelo Grupo Auster"
-          width={361}
-          height={392}
           quality={90}
           sizes="(min-width: 768px) 361px, 80vw"
           className="mx-auto h-auto w-full max-w-[361px]"

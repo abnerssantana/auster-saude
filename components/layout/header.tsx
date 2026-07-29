@@ -14,6 +14,7 @@ import {
 import { CtaWhatsapp } from "@/components/cta-whatsapp";
 import { WhatsappIcon } from "@/components/icons/whatsapp-icon";
 import { NAV_LINKS, WHATSAPP_URL } from "@/lib/site";
+import logo from "@/public/images/logo-auster.svg";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -27,10 +28,8 @@ export function Header() {
           className="shrink-0"
         >
           <Image
-            src="/images/logo-auster.svg"
+            src={logo}
             alt="Auster Saúde"
-            width={131}
-            height={49}
             preload
             className="h-[30px] w-auto md:h-[52px]"
           />

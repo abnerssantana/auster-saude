@@ -8,7 +8,12 @@ import { Footer } from "@/components/layout/footer";
 import { WhatsappFloat } from "@/components/layout/whatsapp-float";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { JsonLd } from "@/components/json-ld";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  OPEN_GRAPH_BASE,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 import "./globals.css";
 
 /*
@@ -36,14 +41,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    siteName: SITE_NAME,
-    title: `${SITE_NAME} — Contabilidade especializada em médicos`,
-    description: SITE_DESCRIPTION,
-    url: SITE_URL,
-  },
+  openGraph: { ...OPEN_GRAPH_BASE, url: "/" },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
 };

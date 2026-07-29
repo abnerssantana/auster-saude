@@ -6,13 +6,15 @@ import { Button } from "@/components/ui/button";
 import { CtaWhatsapp } from "@/components/cta-whatsapp";
 import { AvatarStack } from "@/components/avatar-stack";
 import { HERO, SOCIAL_PROOF } from "@/lib/content";
+import heroDesktop from "@/public/images/ot-heder-1grupo-auster.avif";
+import heroMobile from "@/public/images/heder-1grupo-auster-mobileS.avif";
 
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-[#FEFFED]">
       {/* arte completa do hero como fundo no desktop (2560×1080, alta qualidade) */}
       <Image
-        src="/images/ot-heder-1grupo-auster.avif"
+        src={heroDesktop}
         alt=""
         fill
         preload
@@ -64,10 +66,8 @@ export function Hero() {
       {/* mobile: arte em tamanho completo abaixo do conteúdo */}
       <div className="pt-8 md:hidden" data-reveal="up">
         <Image
-          src="/images/heder-1grupo-auster-mobileS.jpg"
+          src={heroMobile}
           alt="Médico do Grupo Auster"
-          width={1080}
-          height={794}
           preload
           quality={90}
           sizes="100vw"

@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import { CtaWhatsapp } from "@/components/cta-whatsapp";
 import { ATENDIMENTO, DIAGNOSTICO, DIFERENCIAIS } from "@/lib/content";
+import dinheiro from "@/public/images/dinheiro.avif";
+import atendimento from "@/public/images/foto-2-auter.avif";
 
 /* Ícones dos diferenciais, na mesma ordem de DIFERENCIAIS.items */
 const DIFERENCIAL_ICONS = [
@@ -40,10 +42,8 @@ export function QuemSomos() {
               </CtaWhatsapp>
             </div>
             <Image
-              src="/images/dinheiro.png"
+              src={dinheiro}
               alt="Ilustração de economia de impostos"
-              width={581}
-              height={786}
               quality={90}
               sizes="(min-width: 768px) 480px, 90vw"
               className="mx-auto h-auto w-full max-w-[480px] drop-shadow-[0_30px_60px_rgba(0,0,0,0.45)]"
@@ -59,10 +59,8 @@ export function QuemSomos() {
                 className="absolute -inset-3 -z-10 rounded-[28px] bg-mint/10 blur-xl"
               />
               <Image
-                src="/images/foto-2-auter.jpg"
+                src={atendimento}
                 alt="Equipe da Auster em atendimento"
-                width={571}
-                height={531}
                 quality={90}
                 sizes="(min-width: 768px) 540px, 90vw"
                 className="h-auto w-full rounded-3xl ring-1 ring-cream/15"

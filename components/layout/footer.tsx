@@ -1,16 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS, SITE_NAME, WHATSAPP_URL } from "@/lib/site";
+import logoCream from "@/public/images/logo-auster-cream.svg";
 
 export function Footer() {
   return (
     <footer className="section-dark bg-noise relative isolate overflow-hidden">
       <div className="relative z-10 mx-auto flex max-w-[1140px] flex-col items-center gap-8 px-5 py-14 text-center">
         <Image
-          src="/images/logo-auster-cream.svg"
+          src={logoCream}
           alt={SITE_NAME}
-          width={131}
-          height={49}
           className="h-[49px] w-auto"
         />
 

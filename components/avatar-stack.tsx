@@ -10,9 +10,10 @@ import { SOCIAL_PROOF } from "@/lib/content";
 export function AvatarStack({ className }: { className?: string }) {
   return (
     <AvatarGroup className={className}>
-      {SOCIAL_PROOF.avatars.map((src) => (
-        <Avatar key={src} size="lg" className="md:size-12">
-          <AvatarImage src={src} alt="" />
+      {SOCIAL_PROOF.avatars.map((avatar) => (
+        <Avatar key={avatar.src} size="lg" className="md:size-12">
+          {/* base-ui renderiza um <img> nativo, então vai a URL com hash */}
+          <AvatarImage src={avatar.src} alt="" />
           <AvatarFallback>Dr</AvatarFallback>
         </Avatar>
       ))}

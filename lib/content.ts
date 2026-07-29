@@ -1,7 +1,35 @@
 /**
  * Todo o conteúdo editorial da Home, transcrito do export do Elementor
  * (_source/elementor-551-2026-07-29.json). Alterar textos aqui, não nos componentes.
+ *
+ * As imagens entram por import estático (e não por string "/images/..."): o
+ * Next injeta um hash do conteúdo na URL e serve o arquivo com
+ * `Cache-Control: public, max-age=31536000, immutable`. Isso vale tanto para o
+ * arquivo original quanto para as versões otimizadas do /_next/image, que
+ * herdam o max-age do upstream. Trocar a imagem troca o hash, então não existe
+ * risco de cache preso.
  */
+
+import avatar1 from "@/public/images/Ellipse-177.webp";
+import avatar2 from "@/public/images/Ellipse-178.webp";
+import avatar3 from "@/public/images/Ellipse-179.webp";
+import avatar4 from "@/public/images/Ellipse-180.webp";
+import solucaoTributario from "@/public/images/Frame-61-5.avif";
+import solucaoAberturaPj from "@/public/images/Frame-61-4.avif";
+import solucaoCertificacao from "@/public/images/Frame-61-3.avif";
+import solucaoCredenciamento from "@/public/images/Frame-61-2.avif";
+import solucaoContabil from "@/public/images/Frame-61-1.avif";
+import solucaoRecuperacao from "@/public/images/Frame-61-6.avif";
+import solucaoSeguros from "@/public/images/image-134.avif";
+import solucaoPatrimonio from "@/public/images/image-135.avif";
+import depoimentoMariana from "@/public/images/Rectangle-6684.avif";
+import depoimentoPriscila from "@/public/images/Sem-Titulo-3.avif";
+import depoimentoMateus from "@/public/images/mateus.avif";
+import depoimentoPaola from "@/public/images/Rectangle-6685.avif";
+import videoWilliam from "@/public/images/videos/GkOl3-RAq-I.avif";
+import videoEmanuelle from "@/public/images/videos/4KWFcgxtf_0.avif";
+import videoJussara from "@/public/images/videos/3tSwpX0jZxA.avif";
+import videoNatalia from "@/public/images/videos/IIskME0bFqg.avif";
 
 export const HERO = {
   title: "Um ecossistema para o médico que sabe onde quer chegar.",
@@ -10,12 +38,7 @@ export const HERO = {
 };
 
 export const SOCIAL_PROOF = {
-  avatars: [
-    "/images/Ellipse-177.png",
-    "/images/Ellipse-178.png",
-    "/images/Ellipse-179.png",
-    "/images/Ellipse-180.png",
-  ],
+  avatars: [avatar1, avatar2, avatar3, avatar4],
   text: "+ centenas de médicos já tomaram essa decisão",
 };
 
@@ -23,7 +46,7 @@ export const DIAGNOSTICO = {
   title:
     "Seu plantão rende mais quando o imposto é pago do jeito certo. Garanta isso agora.",
   body: "Dois médicos podem trabalhar no mesmo lugar, na mesma função, e terminar o mês com valores bem diferentes no bolso. A diferença não está no que eles ganham está em como pagam os impostos: quem faz o enquadramento certo paga só o que deve; quem erra, paga a mais. Garanta que você estará do lado certo.",
-  cta: "FAÇA SEU DIAGNÓSTICO GRATUITO AGORA",
+  cta: "FAÇA SEU DIAGNÓSTICO GRATUITO",
 };
 
 export const ATENDIMENTO = {
@@ -51,45 +74,45 @@ export const SOLUCOES = {
     {
       title: "Planejamento Tributário",
       description: "Definição do melhor regime para pagar menos imposto.",
-      image: "/images/Frame-61-5.jpg",
+      image: solucaoTributario,
     },
     {
       title: "Abertura de PJ Médica",
       description: "Empresa rápida, regular e sem burocracia.",
-      image: "/images/Frame-61-4.jpg",
+      image: solucaoAberturaPj,
     },
     {
       title: "Certificação Digital",
       description: "Emissão e suporte completos.",
-      image: "/images/Frame-61-3.jpg",
+      image: solucaoCertificacao,
     },
     {
       title: "Credenciamentos Médicos",
       description:
         "Registro em operadoras e convênios, além de assessoria completa para credenciamentos e contratações em órgãos públicos e privados — incluindo hospitais e prefeituras.",
-      image: "/images/Frame-61-2.jpg",
+      image: solucaoCredenciamento,
     },
     {
       title: "Gestão Contábil Consultiva",
       description: "Acompanhamento contínuo focado em médicos.",
-      image: "/images/Frame-61-1.jpg",
+      image: solucaoContabil,
     },
     {
       title: "Recuperação de Tributos",
       description: "Análise e restituição de impostos pagos a mais.",
-      image: "/images/Frame-61-6.jpg",
+      image: solucaoRecuperacao,
     },
     {
       title: "Seguros para médicos",
       description:
         "Seguro de Responsabilidade Civil, Seguro de Vida e Seguro de Automóveis.",
-      image: "/images/image-134.jpg",
+      image: solucaoSeguros,
     },
     {
       title: "Sua proteção patrimonial.",
       description:
         "Estratégias para preservar seus bens e proteger tudo o que você construiu ao longo da vida.",
-      image: "/images/image-135.jpg",
+      image: solucaoPatrimonio,
     },
   ],
 };
@@ -107,7 +130,7 @@ export const RESULTADOS = {
 export const DEPOIMENTOS = [
   {
     name: "Mariana Siqueira Leite - UNIARP",
-    image: "/images/Rectangle-6684.jpg",
+    image: depoimentoMariana,
     paragraphs: [
       "Ter a Auster Contabilidade facilitou muito minha vida. Eu não fico presa a horário, porque eles respondem a qualquer momento, e sempre com pessoas de verdade — nunca robô.",
       "Quando preciso de algum documento, recebo no mesmo dia. Não preciso ficar lembrando de enviar notas ou comprovantes, porque eles mesmos encaminham tudo automaticamente para os lugares onde trabalho. Isso tira um peso enorme da rotina.",
@@ -117,21 +140,21 @@ export const DEPOIMENTOS = [
   },
   {
     name: "Dra Priscila - UNOESC",
-    image: "/images/Sem-Titulo-3.jpg",
+    image: depoimentoPriscila,
     paragraphs: [
       "Desde antes de me formar, a Auster sempre me auxiliou em todos os processos burocráticos e contábeis que precisei (foram e ainda são muitos). Sempre fui atendida com muita dedicação e excelência, além de agilidade nos processos. Sem contar na disponibilidade para resolver os problemas quando eu preciso, de maneira fácil pelo WhatsApp. A carreira médica por si só já é agitada e cheia de aflições e desafios, saber com quem contar para tornar tudo mais simples e acessível é ótimo. Sou muito satisfeita com os serviços prestados, agradeço e indico a Auster sem nenhuma dúvida!",
     ],
   },
   {
     name: "Mateus Campanelli - FURB",
-    image: "/images/mateus.webp",
+    image: depoimentoMateus,
     paragraphs: [
       "Meu nome é Mateus, médico e cliente da Auster Contabilidade. Além de fazerem uma boa gestão contábil da minha PJ, sempre tiram as minhas dúvidas no mesmo dia e são bem acessíveis para resolver problemas e dar orientações. O diferencial da Auster é essa proximidade, que te dá mais segurança e tranquilidade!",
     ],
   },
   {
     name: "Paola Lima - UNIARP",
-    image: "/images/Rectangle-6685.jpg",
+    image: depoimentoPaola,
     paragraphs: [
       "Eu queria agradecer por todo trabalho que a Auster tem feito por mim!! A gente sai da faculdade muito perdido nessa questão financeira, de impostos, descontos, trabalho… se não fosse por vocês tenho certeza que eu estaria perdendo muito dinheiro 😅",
       "Sem contar todo suporte que vocês dão na oportunidades de trabalho, avaliação dos editais e contratos que eu mando, é surreal pensar que uma contabilidade oferece todo esse apoio, e que responde super rápido também 🙌🏼🫶🏼",
@@ -141,10 +164,30 @@ export const DEPOIMENTOS = [
 ];
 
 export const VIDEO_DEPOIMENTOS = [
-  { id: "GkOl3-RAq-I", name: "Dr. ⁠William Guzi", subtitle: "CRM 38359" },
-  { id: "4KWFcgxtf_0", name: "Dra. Emanuelle Kuller", subtitle: "CRM 41180" },
-  { id: "3tSwpX0jZxA", name: "Jussara Panceri", subtitle: "Clínica Fidelis" },
-  { id: "IIskME0bFqg", name: "Natália Gniech", subtitle: "CRM 41240" },
+  {
+    id: "GkOl3-RAq-I",
+    name: "Dr. ⁠William Guzi",
+    subtitle: "CRM 38359",
+    thumb: videoWilliam,
+  },
+  {
+    id: "4KWFcgxtf_0",
+    name: "Dra. Emanuelle Kuller",
+    subtitle: "CRM 41180",
+    thumb: videoEmanuelle,
+  },
+  {
+    id: "3tSwpX0jZxA",
+    name: "Jussara Panceri",
+    subtitle: "Clínica Fidelis",
+    thumb: videoJussara,
+  },
+  {
+    id: "IIskME0bFqg",
+    name: "Natália Gniech",
+    subtitle: "CRM 41240",
+    thumb: videoNatalia,
+  },
 ];
 
 export const CTA_FINAL = {

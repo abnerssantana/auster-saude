@@ -60,8 +60,6 @@ export function Clientes() {
                   <Image
                     src={depoimento.image}
                     alt={`Foto de ${depoimento.name}`}
-                    width={289}
-                    height={366}
                     quality={90}
                     sizes="(min-width: 768px) 260px, 70vw"
                     className="h-auto w-full max-w-[240px] shrink-0 rounded-2xl ring-1 ring-cream/15 md:w-[240px]"
