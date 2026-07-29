@@ -28,12 +28,60 @@ npm run dev
 | `LEAD_TO_EMAIL` | Destino dos leads (aceita vários e-mails separados por vírgula) |
 | `LEAD_FROM_EMAIL` | Remetente. O domínio precisa estar verificado no Resend |
 | `NEXT_PUBLIC_SITE_URL` | Domínio público (canonical, sitemap, Open Graph) |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob, onde os leads viram CSV (ver [Leads](#leads)) |
+| `LEADS_EXPORT_TOKEN` | Senha da rota que baixa o CSV. `openssl rand -hex 32` |
 
 Sem as três primeiras, os formulários respondem 502 e registram o erro no log —
 o resto do site funciona normalmente.
 
 Em desenvolvimento, `http://localhost:3000/api/preview-email` mostra como fica
 o e-mail que o time recebe. A rota devolve 404 em produção.
+
+## Leads
+
+Cada envio vai por e-mail (Resend) **e** é gravado em um CSV no Vercel Blob, um
+arquivo por formulário:
+
+- `leads/quero-ser-auster.csv`
+- `leads/indicacao.csv`
+
+O e-mail é o aviso; o CSV é o registro. Se a gravação falhar, o envio continua
+(e vice-versa) — só a falha do e-mail devolve 502 para quem preencheu.
+
+### Criando o store
+
+Em **Storage → Create Database → Blob**, com acesso **Private**, e conecte ao
+projeto. Privado porque os leads têm CPF, e-mail e endereço: em um store
+público, qualquer pessoa com a URL leria o arquivo inteiro. **O modo de acesso
+não pode ser alterado depois da criação.**
+
+### Baixando o CSV
+
+Pelo painel da Vercel, em **Storage → seu store**, navegando até `leads/`.
+
+Ou pelo site, sem passar pelo painel:
+
+```
+https://SEU-DOMINIO/api/leads/export?form=quero-ser-auster&token=LEADS_EXPORT_TOKEN
+https://SEU-DOMINIO/api/leads/export?form=indicacao&token=LEADS_EXPORT_TOKEN
+```
+
+O link contém a senha — trate como link secreto e não compartilhe em grupo.
+
+### Detalhes
+
+O CSV usa `;` e BOM UTF-8, então o Excel em português abre já com as colunas
+separadas e os acentos certos. Valores começando com `=`, `+`, `-` ou `@`
+recebem um apóstrofo na frente para o Excel não tratar como fórmula.
+
+O Blob não tem "append": [lib/leads-store.ts](lib/leads-store.ts) lê o arquivo,
+acrescenta a linha e regrava usando `ifMatch` com a ETag lida, repetindo se
+outra submissão gravou no meio do caminho. Sem isso, dois envios simultâneos
+perderiam uma das linhas.
+
+As colunas saem dos `label` dos campos na primeira gravação. Mudar a ordem ou
+os nomes depois desalinha as linhas antigas — nesse caso, troque o nome do
+arquivo em `LEAD_FILES` para começar um CSV novo.
 
 ## Onde mexer
 
@@ -46,6 +94,7 @@ o e-mail que o time recebe. A rota devolve 404 em produção.
 | Variantes e tamanhos dos botões | [components/ui/button.tsx](components/ui/button.tsx) |
 | Campos e validação dos formulários | [lib/schemas.ts](lib/schemas.ts) |
 | Conteúdo do e-mail de lead | [emails/lead-email.tsx](emails/lead-email.tsx) |
+| Colunas e nomes dos CSVs de lead | [lib/leads-store.ts](lib/leads-store.ts) |
 | Redirects das URLs antigas do WordPress | [next.config.ts](next.config.ts) |
 
 As seções da home ficam em [components/home/](components/home/), uma por arquivo,
