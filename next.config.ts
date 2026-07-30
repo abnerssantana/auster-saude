@@ -3,6 +3,18 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
 
+  /*
+   * O `build` roda com --webpack de propósito (veja package.json). O Turbopack
+   * do Next 16 não decodifica AVIF — ele avisa "does not support AVIF images"
+   * durante o build — e, sem conseguir ler o cabeçalho, os imports estáticos
+   * .avif perdem a dimensão intrínseca e saem como width=100 height=100. Como
+   * quase toda foto do site é AVIF servida com `h-auto w-full`, o navegador
+   * reservava uma caixa quadrada e reposicionava tudo quando a imagem chegava:
+   * CLS em ~8 imagens. Com o webpack as dimensões reais voltam sozinhas.
+   *
+   * O `dev` usa a mesma flag: com bundlers diferentes o layout local não bate
+   * com o de produção justamente nas imagens, que é o que se está conferindo.
+   */
   images: {
     // fotos principais servidas em alta qualidade; 75 é o padrão para o resto
     qualities: [75, 90],

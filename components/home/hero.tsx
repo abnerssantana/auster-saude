@@ -12,12 +12,21 @@ import heroMobile from "@/public/images/heder-1grupo-auster-mobileS.avif";
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden bg-[#FEFFED]">
-      {/* arte completa do hero como fundo no desktop (2560×1080, alta qualidade) */}
+      {/*
+       * Arte completa do hero como fundo no desktop (2560×1080, alta qualidade).
+       *
+       * Sem `preload` de propósito, aqui e na versão mobile: quem é o LCP
+       * depende do viewport, e `preload` emite o <link> no <head> sem olhar
+       * media query — as duas artes acabavam baixadas em todo dispositivo. Com
+       * o `loading="lazy"` padrão, a que estiver em `display:none` no
+       * breakpoint atual nunca entra em viewport e não é buscada; o
+       * `fetchPriority="high"` devolve a prioridade que o preload dava.
+       */}
       <Image
         src={heroDesktop}
         alt=""
         fill
-        preload
+        fetchPriority="high"
         quality={90}
         sizes="100vw"
         className="-z-10 hidden object-cover object-[20%_center] md:block"
@@ -68,7 +77,7 @@ export function Hero() {
         <Image
           src={heroMobile}
           alt="Médico do Grupo Auster"
-          preload
+          fetchPriority="high"
           quality={90}
           sizes="100vw"
           className="h-auto w-full"

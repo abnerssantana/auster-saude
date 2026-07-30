@@ -57,8 +57,39 @@ atende pacientes.
 ## Preços
 
 Não há tabela pública. O valor depende do regime tributário, do número de fontes
-pagadoras e dos serviços contratados, e é informado no diagnóstico gratuito.
-Não existe taxa de adesão nem cobrança extra fora do contrato.
+pagadoras e dos serviços contratados, e é apresentado antes da contratação, no
+diagnóstico gratuito. A contratação é direta, sem taxas escondidas no contrato.
+
+## Perguntas frequentes
+
+**Vale a pena abrir PJ para trabalhar como médico?**
+Na maior parte dos casos, sim. Como pessoa física, o médico é tributado pela
+tabela progressiva do IRPF, cuja alíquota máxima é de 27,5%. Recebendo como PJ, a
+carga tributária costuma ficar bem abaixo disso. O ponto em que passa a compensar
+depende do faturamento e do número de fontes pagadoras.
+
+**Qual é o melhor regime tributário para médico?**
+Não existe um regime melhor para todos. A escolha entre Simples Nacional e Lucro
+Presumido depende do faturamento anual, da folha de pagamento e de como o serviço
+é prestado.
+
+**Quanto tempo leva para abrir uma PJ médica?**
+Depende da junta comercial do estado, da prefeitura de registro e do registro da
+pessoa jurídica no CRM.
+
+**Como funciona a troca de contabilidade?**
+A Auster solicita documentos e acessos ao contador anterior, revisa o
+enquadramento tributário e assume a rotina fiscal a partir da competência
+combinada, sem interromper a emissão de notas.
+
+**A Auster atende médicos de todo o Brasil?**
+Sim. O atendimento é remoto, por WhatsApp e por aplicativo próprio, em todo o
+território nacional.
+
+**O que é recuperação de tributos?**
+Análise dos impostos já pagos para identificar valores recolhidos a mais e pedir
+restituição, alcançando os últimos cinco anos. Um cliente da Auster recuperou
+R$ 47 mil dessa forma.
 
 ## Páginas
 

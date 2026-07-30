@@ -190,6 +190,56 @@ export const VIDEO_DEPOIMENTOS = [
   },
 ];
 
+/*
+ * Perguntas escritas do jeito que o médico digita na busca — é isso que faz a
+ * pergunta casar com a query, tanto no Google quanto nas respostas de IA. As
+ * respostas abrem com a resposta direta e ficam em torno de 40-60 palavras,
+ * que é o tamanho que costuma ser extraído inteiro como trecho.
+ *
+ * Mesma fonte alimenta o acordeão visível e o JSON-LD de FAQPage, para os dois
+ * não divergirem. Conteúdo tributário: revisar com a equipe antes de publicar.
+ */
+export const FAQ = {
+  title: "Perguntas frequentes de quem está avaliando a troca",
+  items: [
+    {
+      question: "Vale a pena abrir PJ para trabalhar como médico?",
+      answer:
+        "Na maior parte dos casos, sim. Como pessoa física, o médico é tributado pela tabela progressiva do IRPF, cuja alíquota máxima é de 27,5%. Recebendo como PJ, a carga tributária costuma ficar bem abaixo disso. O ponto em que passa a compensar depende do seu faturamento e de quantas fontes pagadoras você tem.",
+    },
+    {
+      question: "Qual é o melhor regime tributário para médico?",
+      answer:
+        "Não existe um regime melhor para todos. A escolha entre Simples Nacional e Lucro Presumido depende do faturamento anual, da folha de pagamento e de como o serviço é prestado. É por isso que dois médicos com a mesma renda terminam o mês com valores diferentes no bolso: o enquadramento não foi o mesmo.",
+    },
+    {
+      question: "Quanto tempo leva para abrir uma PJ médica?",
+      answer:
+        "O prazo depende da junta comercial do estado, da prefeitura onde a empresa será registrada e do registro da pessoa jurídica no CRM. A parte que cabe à contabilidade — documentação, contrato social e inscrições — a Auster resolve sem fila. Peça o prazo estimado para a sua cidade pelo WhatsApp.",
+    },
+    {
+      question: "Como funciona a troca de contabilidade?",
+      answer:
+        "Você não precisa parar de atender para trocar. A Auster solicita os documentos e os acessos ao contador anterior, revisa o enquadramento tributário e assume a rotina fiscal a partir da competência combinada. A migração é conduzida pela equipe, sem taxas escondidas e sem interromper a emissão de notas.",
+    },
+    {
+      question: "A Auster atende médicos de todo o Brasil?",
+      answer:
+        "Sim. O atendimento é remoto, por WhatsApp e pelo app próprio, com médicos atendidos em todo o território nacional. Documentos, boletos e notas ficam disponíveis no aplicativo, e o envio para os locais onde você atende é feito pela equipe — você não precisa lembrar de encaminhar nada.",
+    },
+    {
+      question: "Quanto custa a contabilidade da Auster?",
+      answer:
+        "Não há tabela única. O valor depende do regime tributário, do número de fontes pagadoras e dos serviços contratados — abertura de PJ, credenciamentos, recuperação de tributos e seguros são escopos diferentes. O diagnóstico é gratuito e o valor é apresentado antes da contratação, sem taxas escondidas.",
+    },
+    {
+      question: "O que é recuperação de tributos?",
+      answer:
+        "É a análise dos impostos já pagos para identificar valores recolhidos a mais e pedir a restituição. Acontece com frequência quando o enquadramento estava errado ou houve retenção indevida na fonte. A revisão alcança os últimos cinco anos. Um cliente da Auster recuperou R$ 47 mil dessa forma.",
+    },
+  ],
+};
+
 export const CTA_FINAL = {
   title: "Se você sabe onde quer chegar, a Auster pode te ajudar a chegar lá.",
   body: "Tenha como parceiro um grupo preparado para levar você ao seu melhor nível profissional — com transparência, agilidade e resultados reais.",
