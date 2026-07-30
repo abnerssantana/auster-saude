@@ -3,6 +3,7 @@ import { queroSerAusterSchema } from "@/lib/schemas";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { sendLead } from "@/lib/mailer";
 import { LEAD_FILES, saveLead } from "@/lib/leads-store";
+import { whatsappUrlFor } from "@/lib/site";
 
 export async function POST(request: Request) {
   if (!rateLimit(clientIp(request)).allowed) {
@@ -28,11 +29,15 @@ export async function POST(request: Request) {
 
   const { firstName, lastName, cpf, whatsapp, email, address } = parsed.data;
 
+  const fullName = `${firstName} ${lastName}`;
+
+  // `href` só é usado no e-mail, para o time abrir a conversa ou responder com
+  // um toque; o CSV grava apenas label e value.
   const fields = [
-    { label: "Nome", value: `${firstName} ${lastName}` },
+    { label: "Nome", value: fullName },
     { label: "CPF", value: cpf },
-    { label: "WhatsApp", value: whatsapp },
-    { label: "E-mail", value: email },
+    { label: "WhatsApp", value: whatsapp, href: whatsappUrlFor(whatsapp) },
+    { label: "E-mail", value: email, href: `mailto:${email}` },
     { label: "Endereço", value: address },
   ];
 
@@ -42,8 +47,11 @@ export async function POST(request: Request) {
   const [stored, sent] = await Promise.allSettled([
     saveLead({ pathname: LEAD_FILES.queroSerAuster, fields }),
     sendLead({
-      subject: `Novo cadastro Quero ser Auster — ${firstName} ${lastName}`,
-      title: "Novo cadastro: Quero ser Auster",
+      subject: `Novo cadastro Quero ser Auster — ${fullName}`,
+      form: "Quero ser Auster",
+      highlight: fullName,
+      note: "Aguardando o contato de um consultor.",
+      action: { label: "Falar no WhatsApp", href: whatsappUrlFor(whatsapp) },
       replyTo: email,
       fields,
     }),

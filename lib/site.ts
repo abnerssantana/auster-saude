@@ -45,6 +45,19 @@ export const WHATSAPP_URL = `https://api.whatsapp.com/send?phone=+${WHATSAPP_PHO
   WHATSAPP_MESSAGE,
 )}`;
 
+/**
+ * Link de conversa com um número que veio de formulário — o botão do e-mail de
+ * lead usa isto para o time abrir a conversa sem digitar o número.
+ *
+ * O schema já garante 10 ou 11 dígitos com DDD, então nesse caso só falta o
+ * código do país. A decisão é pelo tamanho, e não pelo prefixo: 55 também é o
+ * DDD de Santa Maria, e um número de lá começa com 55 sem ter o país.
+ */
+export function whatsappUrlFor(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  return `https://wa.me/${digits.length <= 11 ? `55${digits}` : digits}`;
+}
+
 export const NAV_LINKS = [
   { label: "QUEM SOMOS", href: "/#quemsomos" },
   { label: "SOLUÇÕES", href: "/#solucoes" },

@@ -35,7 +35,17 @@ Sem as três primeiras, os formulários respondem 502 e registram o erro no log 
 o resto do site funciona normalmente.
 
 Em desenvolvimento, `http://localhost:3000/api/preview-email` mostra como fica
-o e-mail que o time recebe. A rota devolve 404 em produção.
+o e-mail que o time recebe (`?form=indicacao` para a outra variante). A rota
+devolve 404 em produção.
+
+O logo da faixa escura é o PNG em `public/images/logo-auster-cream-email.png` —
+cliente de e-mail não renderiza SVG. Se o logo mudar, regrave o arquivo a partir
+do SVG:
+
+```bash
+sips -s format png --resampleWidth 300 public/images/logo-auster-cream.svg \
+  --out public/images/logo-auster-cream-email.png
+```
 
 ## Leads
 

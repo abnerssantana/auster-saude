@@ -3,6 +3,7 @@ import { indicacaoSchema } from "@/lib/schemas";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { sendLead } from "@/lib/mailer";
 import { LEAD_FILES, saveLead } from "@/lib/leads-store";
+import { whatsappUrlFor } from "@/lib/site";
 
 export async function POST(request: Request) {
   if (!rateLimit(clientIp(request)).allowed) {
@@ -27,10 +28,15 @@ export async function POST(request: Request) {
 
   const { clientName, colleagueName, colleaguePhone } = parsed.data;
 
+  // `href` só é usado no e-mail; o CSV grava apenas label e value.
   const fields = [
     { label: "Nome do cliente", value: clientName },
     { label: "Nome do colega", value: colleagueName },
-    { label: "WhatsApp do colega", value: colleaguePhone },
+    {
+      label: "WhatsApp do colega",
+      value: colleaguePhone,
+      href: whatsappUrlFor(colleaguePhone),
+    },
   ];
 
   // Ver a nota em app/api/quero-ser-auster/route.ts.
@@ -38,7 +44,13 @@ export async function POST(request: Request) {
     saveLead({ pathname: LEAD_FILES.indicacao, fields }),
     sendLead({
       subject: `Nova indicação — ${colleagueName} (por ${clientName})`,
-      title: "Nova indicação de colega",
+      form: "Indicação",
+      highlight: colleagueName,
+      note: `Indicado por ${clientName}.`,
+      action: {
+        label: "Falar no WhatsApp",
+        href: whatsappUrlFor(colleaguePhone),
+      },
       fields,
     }),
   ]);

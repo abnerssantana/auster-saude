@@ -1,10 +1,17 @@
 import { Resend } from "resend";
-import { LeadEmail } from "@/emails/lead-email";
+import { LeadEmail, type LeadField } from "@/emails/lead-email";
 
 type SendLeadArgs = {
   subject: string;
-  title: string;
-  fields: Array<{ label: string; value: string }>;
+  /** Formulário de origem: vira o selo no topo do e-mail. */
+  form: string;
+  /** Nome que entra como título — quem preencheu ou quem foi indicado. */
+  highlight: string;
+  /** Contexto extra sob o título, quando existe. */
+  note?: string;
+  fields: LeadField[];
+  /** Ação principal do e-mail, em botão. */
+  action?: { label: string; href: string };
   replyTo?: string;
 };
 
@@ -14,8 +21,11 @@ type SendLeadArgs = {
  */
 export async function sendLead({
   subject,
-  title,
+  form,
+  highlight,
+  note,
   fields,
+  action,
   replyTo,
 }: SendLeadArgs) {
   const apiKey = process.env.RESEND_API_KEY;
@@ -35,7 +45,15 @@ export async function sendLead({
     to: to.split(",").map((address) => address.trim()),
     replyTo,
     subject,
-    react: LeadEmail({ title, preview: subject, fields }),
+    react: LeadEmail({
+      form,
+      highlight,
+      note,
+      preview: subject,
+      fields,
+      action,
+      receivedAt: new Date(),
+    }),
   });
 
   if (error) {
