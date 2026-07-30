@@ -58,7 +58,7 @@ export const ATENDIMENTO = {
 };
 
 export const DIFERENCIAIS = {
-  title: "Nossos diferencias reais:",
+  title: "Nossos diferenciais reais:",
   items: [
     "Atendimento humano, sem chatbots e sem enrolação.",
     "Contratação direta, sem taxas escondidas ou surpresas no contrato.",
