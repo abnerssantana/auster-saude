@@ -54,6 +54,16 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      /* Mesmo motivo: sem isto o /llms.txt sai com `no-store`. */
+      {
+        source: "/llms.txt",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, stale-while-revalidate=86400",
+          },
+        ],
+      },
     ];
   },
 };

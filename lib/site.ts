@@ -1,10 +1,29 @@
+/*
+ * Domínio canônico de produção. Tem que ser o host que realmente serve o site:
+ * é daqui que saem canonical, og:url, sitemap e a linha Sitemap do robots.txt.
+ *
+ * `novosite.austersaude.com.br` era o host de homologação e hoje só faz 301
+ * para o apex — apontar para ele fazia cada página se declarar canônica de uma
+ * URL que redireciona, e as três URLs do sitemap caírem em "Página com
+ * redirecionamento" no Search Console.
+ */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://novosite.austersaude.com.br";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://austersaude.com.br";
 
 export const SITE_NAME = "Auster Saúde";
 
 export const SITE_DESCRIPTION =
   "Contabilidade especializada em médicos: planejamento tributário, abertura de PJ, credenciamentos e gestão contábil consultiva. Atendimento humano, ágil e transparente.";
+
+/*
+ * Data da última revisão do conteúdo. Vai para o <lastmod> do sitemap, que é
+ * como buscadores e buscas com IA medem frescor. Atualize ao mexer na copy.
+ *
+ * De propósito não é `new Date()`: um lastmod que muda a cada deploy sem o
+ * conteúdo ter mudado é ruído, e o Google passa a ignorar o campo do site
+ * inteiro quando percebe que ele não é confiável.
+ */
+export const CONTENT_UPDATED_AT = "2026-07-29";
 
 /*
  * Base de Open Graph compartilhada. Definir `openGraph` numa página substitui
