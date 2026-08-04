@@ -23,7 +23,13 @@ const SEPARATOR = ";";
 const NEWLINE = "\r\n";
 
 export const LEAD_FILES = {
-  queroSerAuster: "leads/quero-ser-auster.csv",
+  queroSerAuster: "leads/quero-ser-auster-2.csv",
+  /**
+   * Cadastros anteriores às colunas de faculdade e formatura. O cabeçalho é
+   * escrito só na criação do arquivo, então as colunas novas pediram um arquivo
+   * novo; este continua baixável por /api/leads/export?form=quero-ser-auster-1.
+   */
+  queroSerAusterAnterior: "leads/quero-ser-auster.csv",
   indicacao: "leads/indicacao.csv",
 } as const;
 

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { queroSerAusterSchema } from "@/lib/schemas";
+import { GRADUATION_STATUS_LABEL, queroSerAusterSchema } from "@/lib/schemas";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { sendLead } from "@/lib/mailer";
 import { LEAD_FILES, saveLead } from "@/lib/leads-store";
@@ -27,9 +27,31 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const { firstName, lastName, cpf, whatsapp, email, address } = parsed.data;
+  const {
+    firstName,
+    lastName,
+    cpf,
+    whatsapp,
+    email,
+    address,
+    college,
+    graduationStatus,
+    graduationYear,
+    graduationSemester,
+  } = parsed.data;
 
   const fullName = `${firstName} ${lastName}`;
+
+  /*
+   * "2028/1", como se escreve o semestre. Fica vazio para quem já é formado —
+   * o e-mail omite linhas sem valor e o CSV mantém a coluna. A situação entra
+   * na condição para que um ano enviado fora do fluxo (o schema só o cobra de
+   * quem vai se formar) não vire dado gravado.
+   */
+  const graduation =
+    graduationStatus === "a-se-formar" && graduationYear && graduationSemester
+      ? `${graduationYear}/${graduationSemester}`
+      : "";
 
   // `href` só é usado no e-mail, para o time abrir a conversa ou responder com
   // um toque; o CSV grava apenas label e value.
@@ -39,6 +61,9 @@ export async function POST(request: Request) {
     { label: "WhatsApp", value: whatsapp, href: whatsappUrlFor(whatsapp) },
     { label: "E-mail", value: email, href: `mailto:${email}` },
     { label: "Endereço", value: address },
+    { label: "Faculdade", value: college },
+    { label: "Situação", value: GRADUATION_STATUS_LABEL[graduationStatus] },
+    { label: "Formatura", value: graduation },
   ];
 
   // O CSV é registro, o e-mail é o aviso: rodam juntos e um não derruba o

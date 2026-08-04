@@ -118,7 +118,11 @@ export function LeadEmail({
    * risco de esconder um campo por coincidência.
    */
   const shown = `${highlight} ${note ?? ""}`;
-  const rows = fields.filter((field) => !shown.includes(field.value));
+  const rows = fields.filter(
+    // Campo vazio também sai: há coluna que só vale para parte dos cadastros
+    // (o semestre de formatura) e que o CSV precisa manter mesmo em branco.
+    (field) => field.value && !shown.includes(field.value),
+  );
 
   return (
     <Html lang="pt-BR" dir="ltr">

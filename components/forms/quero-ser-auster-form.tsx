@@ -1,15 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { CheckCircle2 } from "lucide-react";
 import { TextField } from "@/components/forms/form-field";
+import { SelectField } from "@/components/forms/select-field";
 import { ConsentField } from "@/components/forms/consent-field";
 import { HoneypotField } from "@/components/forms/honeypot-field";
 import { SubmitButton } from "@/components/forms/submit-button";
 import {
+  GRADUATION_SEMESTER_OPTIONS,
+  GRADUATION_STATUS_OPTIONS,
+  graduationYearOptions,
   maskCpf,
   maskPhone,
   queroSerAusterSchema,
@@ -23,11 +27,17 @@ export function QueroSerAusterForm() {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<QueroSerAusterInput>({
     resolver: zodResolver(queroSerAusterSchema),
     defaultValues: { website: "" },
   });
+
+  // useWatch, e não watch(): assina só este campo e não devolve função, que é o
+  // que faria o React Compiler desistir de memoizar o formulário inteiro.
+  const willGraduate =
+    useWatch({ control, name: "graduationStatus" }) === "a-se-formar";
 
   async function onSubmit(values: QueroSerAusterInput) {
     try {
@@ -131,6 +141,53 @@ export function QueroSerAusterForm() {
         error={errors.address}
         {...register("address")}
       />
+
+      <div className="grid gap-[18px] sm:grid-cols-2">
+        <TextField
+          id="college"
+          label="Faculdade"
+          placeholder="Faculdade"
+          autoComplete="organization"
+          error={errors.college}
+          {...register("college")}
+        />
+        <SelectField
+          id="graduation-status"
+          label="Situação na faculdade"
+          placeholder="Formado ou a se formar?"
+          options={GRADUATION_STATUS_OPTIONS}
+          error={errors.graduationStatus}
+          {...register("graduationStatus", {
+            // Trocar para "Formado" tira os campos da tela; sem limpar aqui, o
+            // ano e o semestre escolhidos antes seguiriam no envio.
+            onChange: () => {
+              setValue("graduationYear", "");
+              setValue("graduationSemester", "");
+            },
+          })}
+        />
+      </div>
+
+      {willGraduate ? (
+        <div className="grid gap-[18px] sm:grid-cols-2">
+          <SelectField
+            id="graduation-year"
+            label="Ano de formatura"
+            placeholder="Ano de formatura"
+            options={graduationYearOptions()}
+            error={errors.graduationYear}
+            {...register("graduationYear")}
+          />
+          <SelectField
+            id="graduation-semester"
+            label="Semestre de formatura"
+            placeholder="Semestre de formatura"
+            options={GRADUATION_SEMESTER_OPTIONS}
+            error={errors.graduationSemester}
+            {...register("graduationSemester")}
+          />
+        </div>
+      ) : null}
 
       <ConsentField
         id="consent-auster"

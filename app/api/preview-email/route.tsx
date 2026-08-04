@@ -45,6 +45,9 @@ const SAMPLES: Record<string, Sample> = {
         label: "Endereço",
         value: "Rua das Flores, 100 — Centro, Joinville/SC",
       },
+      { label: "Faculdade", value: "Univille" },
+      { label: "Situação", value: "A se formar" },
+      { label: "Formatura", value: "2028/2" },
     ],
   },
   indicacao: {

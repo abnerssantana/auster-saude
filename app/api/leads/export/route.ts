@@ -14,6 +14,7 @@ import { LEAD_FILES } from "@/lib/leads-store";
 
 const FORMS = {
   "quero-ser-auster": LEAD_FILES.queroSerAuster,
+  "quero-ser-auster-1": LEAD_FILES.queroSerAusterAnterior,
   indicacao: LEAD_FILES.indicacao,
 } as const;
 
@@ -48,7 +49,7 @@ export async function GET(request: NextRequest) {
 
   if (!pathname) {
     return NextResponse.json(
-      { error: "Use ?form=quero-ser-auster ou ?form=indicacao." },
+      { error: `Use ?form= com um destes: ${Object.keys(FORMS).join(", ")}.` },
       { status: 400 },
     );
   }
