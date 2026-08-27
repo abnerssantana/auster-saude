@@ -228,6 +228,11 @@ export const FAQ = {
         "Sim. O atendimento é remoto, por WhatsApp e pelo app próprio, com médicos atendidos em todo o território nacional. Documentos, boletos e notas ficam disponíveis no aplicativo, e o envio para os locais onde você atende é feito pela equipe — você não precisa lembrar de encaminhar nada.",
     },
     {
+      question: "A Auster atende clínicas e outros profissionais da área da saúde?",
+      answer:
+        "Sim. Além do médico com PJ individual, a Auster atende clínicas médicas — abertura com sócios, credenciamento em operadoras e convênios, folha da equipe e gestão contábil consultiva. Profissionais de outras áreas da saúde podem chamar no WhatsApp para avaliar o caso.",
+    },
+    {
       question: "Quanto custa a contabilidade da Auster?",
       answer:
         "Não há tabela única. O valor depende do regime tributário, do número de fontes pagadoras e dos serviços contratados — abertura de PJ, credenciamentos, recuperação de tributos e seguros são escopos diferentes. O diagnóstico é gratuito e o valor é apresentado antes da contratação, sem taxas escondidas.",

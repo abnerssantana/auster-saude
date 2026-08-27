@@ -13,7 +13,7 @@ export const SITE_URL =
 export const SITE_NAME = "Auster Saúde";
 
 export const SITE_DESCRIPTION =
-  "Contabilidade especializada em médicos: planejamento tributário, abertura de PJ, credenciamentos e gestão contábil consultiva. Atendimento humano, ágil e transparente.";
+  "Contabilidade para médicos, clínicas e área da saúde em todo o Brasil: planejamento tributário, abertura de PJ, credenciamentos e gestão contábil consultiva. Atendimento humano, ágil e transparente.";
 
 /*
  * Data da última revisão do conteúdo. Vai para o <lastmod> do sitemap, que é
@@ -23,7 +23,7 @@ export const SITE_DESCRIPTION =
  * conteúdo ter mudado é ruído, e o Google passa a ignorar o campo do site
  * inteiro quando percebe que ele não é confiável.
  */
-export const CONTENT_UPDATED_AT = "2026-07-29";
+export const CONTENT_UPDATED_AT = "2026-08-27";
 
 /*
  * Base de Open Graph compartilhada. Definir `openGraph` numa página substitui

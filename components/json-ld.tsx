@@ -4,7 +4,12 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "AccountingService",
   name: SITE_NAME,
-  alternateName: "Auster Contabilidade",
+  /*
+   * "Grupo Auster" e "Auster Contabilidade" são como as pessoas buscam a marca
+   * no Google (consultas reais do Search Console) — os três nomes precisam
+   * apontar para a mesma entidade.
+   */
+  alternateName: ["Auster Contabilidade", "Grupo Auster"],
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   logo: `${SITE_URL}/images/logo-auster.svg`,

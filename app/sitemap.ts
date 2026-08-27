@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CONTENT_UPDATED_AT, SITE_URL } from "@/lib/site";
+import { LANDING_UPDATED_AT, LOCAIS } from "@/lib/locais";
 
 /*
  * A home entra como `SITE_URL` sem barra final: é exatamente o que o Next
@@ -29,5 +30,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: `${SITE_URL}/contabilidade-para-medicos`,
+      lastModified: LANDING_UPDATED_AT,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...LOCAIS.map((local) => ({
+      url: `${SITE_URL}/contabilidade-para-medicos/${local.slug}`,
+      lastModified: LANDING_UPDATED_AT,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
   ];
 }
