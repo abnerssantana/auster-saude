@@ -83,7 +83,7 @@ export default async function CidadePage({
       name: SITE_NAME,
       alternateName: ["Auster Contabilidade", "Grupo Auster"],
       url: SITE_URL,
-      telephone: "+55 47 99611-4584",
+      telephone: "+55 49 99812-0711",
     },
   };
 

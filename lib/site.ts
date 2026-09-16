@@ -37,7 +37,7 @@ export const OPEN_GRAPH_BASE = {
   siteName: SITE_NAME,
 } as const;
 
-const WHATSAPP_PHONE = "5547996114584";
+const WHATSAPP_PHONE = "5549998120711";
 const WHATSAPP_MESSAGE = "Olá estou entrando em contato através do site";
 
 /** Mesmo link usado em todos os CTAs do site atual. */

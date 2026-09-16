@@ -13,7 +13,7 @@ const schema = {
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   logo: `${SITE_URL}/images/logo-auster.svg`,
-  telephone: "+55 47 99611-4584",
+  telephone: "+55 49 99812-0711",
   areaServed: "BR",
   knowsLanguage: "pt-BR",
   serviceType: [
