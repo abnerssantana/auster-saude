@@ -68,19 +68,6 @@ export const DIFERENCIAIS = {
   ],
 };
 
-export const AUSTER_NEXT = {
-  eyebrow: "Auster Next",
-  title: "O financeiro do médico, num app só.",
-  body: "Pessoa física e PJ separadas no mesmo painel, os lançamentos chegando direto do banco e as guias da Auster Contabilidade à mão. Na web, no iPhone e no Android.",
-  cta: "CONHEÇA O AUSTER NEXT",
-  items: [
-    "Financeiro PF e PJ",
-    "Integração com o seu banco",
-    "Agenda de compromissos e plantões",
-    "Guias e documentos da contabilidade",
-  ],
-};
-
 export const SOLUCOES = {
   title: "Soluções especializadas para médicos:",
   items: [

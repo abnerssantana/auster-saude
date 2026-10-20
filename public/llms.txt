@@ -6,7 +6,7 @@
 > feito por pessoas — sem chatbot, sem taxa escondida.
 
 Sede em Santa Catarina, atendimento em todo o Brasil, em português.
-Última atualização deste arquivo: 2026-07-29.
+Última atualização deste arquivo: 2026-10-20.
 
 ## O que é a Auster Saúde
 
@@ -43,7 +43,10 @@ atende pacientes.
 - Contratação direta, sem taxas escondidas no contrato.
 - Agilidade na abertura de PJ e na emissão de notas fiscais.
 - Envio automático de notas e comprovantes para os locais onde o médico atende.
-- App próprio para consultar documentos e boletos.
+- App próprio, o Auster Next (https://austernext.com.br): financeiro da pessoa
+  física e da PJ, integração com o banco por Open Finance, agenda de plantões,
+  documentos e a contabilidade da PJ (guias, obrigações e pedidos do contador)
+  na web, no iPhone e no Android.
 
 ## Resultados citáveis
 
@@ -100,6 +103,9 @@ R$ 47 mil dessa forma.
   contato.
 - [Indicação](https://austersaude.com.br/indicacao): formulário para
   indicar um colega médico e receber benefícios.
+- [Auster Next](https://austersaude.com.br/auster-next): o app financeiro do
+  médico, parte por parte (financeiro PF e PJ, Open Finance, agenda,
+  documentos, contabilidade integrada e aplicativos).
 
 ## Contato
 

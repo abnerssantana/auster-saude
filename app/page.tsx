@@ -1,6 +1,6 @@
 import { Hero } from "@/components/home/hero";
 import { QuemSomos } from "@/components/home/quem-somos";
-import { AusterNext } from "@/components/home/auster-next";
+import { AusterNextHero } from "@/components/auster-next/hero";
 import { Solucoes } from "@/components/home/solucoes";
 import { Clientes } from "@/components/home/clientes";
 import { Faq } from "@/components/home/faq";
@@ -12,7 +12,12 @@ export default function Home() {
     <>
       <Hero />
       <QuemSomos />
-      <AusterNext />
+      <AusterNextHero
+        heading="h2"
+        campaign="home"
+        moreHref="/auster-next"
+        id="auster-next"
+      />
       <Solucoes />
       <Clientes />
       <Faq />

@@ -23,7 +23,7 @@ export const SITE_DESCRIPTION =
  * conteúdo ter mudado é ruído, e o Google passa a ignorar o campo do site
  * inteiro quando percebe que ele não é confiável.
  */
-export const CONTENT_UPDATED_AT = "2026-08-27";
+export const CONTENT_UPDATED_AT = "2026-10-20";
 
 /*
  * Base de Open Graph compartilhada. Definir `openGraph` numa página substitui
@@ -44,13 +44,6 @@ const WHATSAPP_MESSAGE = "Olá estou entrando em contato através do site";
 export const WHATSAPP_URL = `https://api.whatsapp.com/send?phone=+${WHATSAPP_PHONE}&text=${encodeURIComponent(
   WHATSAPP_MESSAGE,
 )}`;
-
-/*
- * App do grupo (financeiro PF/PJ, Open Finance, agenda, contabilidade). As UTMs
- * deixam o GA4 de lá separar quem chegou pela home daqui.
- */
-export const AUSTER_NEXT_URL =
-  "https://austernext.com.br/?utm_source=austersaude&utm_medium=site&utm_campaign=home";
 
 /**
  * Link de conversa com um número que veio de formulário — o botão do e-mail de
@@ -84,10 +77,21 @@ export const CRC_REGISTROS: { nome: string; funcao?: string; registro: string }[
   },
 ];
 
+/** Menu do cabeçalho: curto de propósito. */
 export const NAV_LINKS = [
+  { label: "INÍCIO", href: "/" },
+  { label: "APP", href: "/auster-next" },
+] as const;
+
+/*
+ * O rodapé segue com o mapa completo: é por aqui que /quero-ser-auster e
+ * /indicacao continuam alcançáveis depois que saíram do cabeçalho.
+ */
+export const FOOTER_LINKS = [
   { label: "QUEM SOMOS", href: "/#quemsomos" },
   { label: "SOLUÇÕES", href: "/#solucoes" },
   { label: "CLIENTES", href: "/#nossosclientes" },
+  { label: "APP", href: "/auster-next" },
   { label: "QUERO SER AUSTER", href: "/quero-ser-auster" },
   { label: "INDICAÇÕES", href: "/indicacao" },
 ] as const;

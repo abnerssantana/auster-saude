@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   CRC_REGISTROS,
-  NAV_LINKS,
+  FOOTER_LINKS,
   SITE_NAME,
   WHATSAPP_URL,
 } from "@/lib/site";
@@ -20,7 +20,7 @@ export function Footer() {
 
         <nav aria-label="Navegação do rodapé">
           <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            {NAV_LINKS.map((link) => (
+            {FOOTER_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
