@@ -1,5 +1,6 @@
 import { Hero } from "@/components/home/hero";
 import { QuemSomos } from "@/components/home/quem-somos";
+import { AusterNext } from "@/components/home/auster-next";
 import { Solucoes } from "@/components/home/solucoes";
 import { Clientes } from "@/components/home/clientes";
 import { Faq } from "@/components/home/faq";
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Hero />
       <QuemSomos />
+      <AusterNext />
       <Solucoes />
       <Clientes />
       <Faq />

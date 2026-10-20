@@ -45,6 +45,13 @@ export const WHATSAPP_URL = `https://api.whatsapp.com/send?phone=+${WHATSAPP_PHO
   WHATSAPP_MESSAGE,
 )}`;
 
+/*
+ * App do grupo (financeiro PF/PJ, Open Finance, agenda, contabilidade). As UTMs
+ * deixam o GA4 de lá separar quem chegou pela home daqui.
+ */
+export const AUSTER_NEXT_URL =
+  "https://austernext.com.br/?utm_source=austersaude&utm_medium=site&utm_campaign=home";
+
 /**
  * Link de conversa com um número que veio de formulário — o botão do e-mail de
  * lead usa isto para o time abrir a conversa sem digitar o número.
