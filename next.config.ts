@@ -28,6 +28,19 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
   },
 
+  /*
+   * lib/og.tsx lê as fontes e o logo do disco com join(process.cwd(), ...).
+   * O tracer do webpack não segue esses caminhos, e a imagem OG das cidades
+   * (a única gerada sob demanda, numa função) quebrava em produção com ENOENT
+   * no .ttf. As estáticas não sentem: são geradas no build, com o disco todo.
+   */
+  outputFileTracingIncludes: {
+    "/**/opengraph-image*": [
+      "./assets/fonts/*.ttf",
+      "./public/images/logo-auster-cream.svg",
+    ],
+  },
+
   async redirects() {
     return [
       // URLs herdadas do WordPress

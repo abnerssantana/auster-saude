@@ -26,11 +26,32 @@ export function ScrollReveal() {
       { rootMargin: "0px 0px -15% 0px" },
     );
 
-    for (const el of document.querySelectorAll("[data-reveal]")) {
-      observer.observe(el);
-    }
+    const observeWithin = (root: ParentNode) => {
+      for (const el of root.querySelectorAll("[data-reveal]:not(.is-visible)")) {
+        observer.observe(el);
+      }
+    };
+    observeWithin(document);
+
+    /*
+     * Este componente vive no layout raiz e não remonta na navegação
+     * client-side: a página nova chega como nós inseridos no DOM. Sem isto,
+     * quem trocava de página pelo menu via tudo com data-reveal (as imagens,
+     * principalmente) preso em opacity 0 até recarregar.
+     */
+    const mutations = new MutationObserver((records) => {
+      for (const record of records) {
+        for (const node of record.addedNodes) {
+          if (!(node instanceof Element)) continue;
+          if (node.matches("[data-reveal]:not(.is-visible)")) observer.observe(node);
+          observeWithin(node);
+        }
+      }
+    });
+    mutations.observe(document.body, { childList: true, subtree: true });
 
     return () => {
+      mutations.disconnect();
       observer.disconnect();
       document.documentElement.removeAttribute("data-reveal-ready");
     };
