@@ -80,6 +80,7 @@ export const CRC_REGISTROS: { nome: string; funcao?: string; registro: string }[
 /** Menu do cabeçalho: as âncoras da home ficam só no rodapé. */
 export const NAV_LINKS = [
   { label: "INÍCIO", href: "/" },
+  { label: "BLOG", href: "/blog" },
   { label: "PLATAFORMA FINANCEIRA", href: "/auster-next" },
   { label: "QUERO SER AUSTER", href: "/quero-ser-auster" },
   { label: "INDICAÇÕES", href: "/indicacao" },
@@ -90,6 +91,7 @@ export const FOOTER_LINKS = [
   { label: "QUEM SOMOS", href: "/#quemsomos" },
   { label: "SOLUÇÕES", href: "/#solucoes" },
   { label: "CLIENTES", href: "/#nossosclientes" },
+  { label: "BLOG", href: "/blog" },
   { label: "PLATAFORMA FINANCEIRA", href: "/auster-next" },
   { label: "QUERO SER AUSTER", href: "/quero-ser-auster" },
   { label: "INDICAÇÕES", href: "/indicacao" },

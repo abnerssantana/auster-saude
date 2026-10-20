@@ -3,6 +3,18 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
 
+  experimental: {
+    serverActions: {
+      /*
+       * Imagens do painel do blog sobem por server action (padrão: 1 MB). O
+       * navegador já reduz a foto antes e a action recusa acima de 3 MB; a
+       * folga cobre o envelope do multipart. Não passar de 4,5 MB, que é o
+       * teto de requisição das funções da Vercel.
+       */
+      bodySizeLimit: "4mb",
+    },
+  },
+
   /*
    * O `build` roda com --webpack de propósito (veja package.json). O Turbopack
    * do Next 16 não decodifica AVIF — ele avisa "does not support AVIF images"

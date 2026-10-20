@@ -1,0 +1,139 @@
+/*
+ * Editor visual do painel. O texto aqui imita o artigo publicado
+ * (components/blog/mdx-components.tsx) para quem escreve ver o resultado.
+ */
+
+.rich-editor {
+  border: 1px solid var(--input);
+  border-radius: 0.6rem;
+  background: var(--card);
+  overflow: clip;
+}
+
+.rich-editor:focus-within {
+  border-color: var(--ring);
+}
+
+.rich-editor-erro {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: color-mix(in oklch, var(--destructive) 8%, white);
+  color: var(--destructive);
+  font-size: 0.875rem;
+}
+
+/* Barra de ferramentas presa no topo enquanto o texto rola. */
+.rich-editor [role="toolbar"] {
+  position: sticky;
+  top: 57px; /* altura do cabeçalho do painel */
+  z-index: 10;
+  flex-wrap: wrap;
+  height: auto;
+  border-radius: 0;
+  background: var(--muted);
+}
+
+.botao-texto {
+  padding: 0 0.3rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--primary);
+}
+
+.rich-editor-conteudo {
+  min-height: 520px;
+  max-width: 720px;
+  padding: 1.25rem 1.5rem 3rem;
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: color-mix(in oklch, var(--foreground) 85%, transparent);
+}
+
+.rich-editor-conteudo h2,
+.rich-editor-conteudo h3,
+.rich-editor-conteudo h4 {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--foreground);
+}
+.rich-editor-conteudo h2 { margin: 2rem 0 0.75rem; font-size: 1.75rem; }
+.rich-editor-conteudo h3 { margin: 1.5rem 0 0.5rem; font-size: 1.35rem; }
+.rich-editor-conteudo h4 { margin: 1.25rem 0 0.5rem; font-size: 1.1rem; }
+.rich-editor-conteudo p { margin: 0 0 1rem; }
+.rich-editor-conteudo ul { margin: 0 0 1rem 1.5rem; list-style: disc; }
+.rich-editor-conteudo ol { margin: 0 0 1rem 1.5rem; list-style: decimal; }
+.rich-editor-conteudo li { margin: 0.25rem 0; }
+.rich-editor-conteudo strong { font-weight: 600; color: var(--foreground); }
+.rich-editor-conteudo blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1.25rem;
+  border-left: 2px solid color-mix(in oklch, var(--primary) 40%, transparent);
+  font-family: var(--font-fraunces), serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--foreground);
+}
+.rich-editor-conteudo a { color: var(--primary); text-decoration: underline; }
+.rich-editor-conteudo hr { margin: 2rem 0; border-color: var(--border); }
+.rich-editor-conteudo img { max-width: 100%; border-radius: 1rem; }
+.rich-editor-conteudo table { margin: 1rem 0; border-collapse: collapse; font-size: 15px; }
+.rich-editor-conteudo th,
+.rich-editor-conteudo td { border: 1px solid var(--border); padding: 0.45rem 0.7rem; }
+.rich-editor-conteudo th { background: var(--muted); font-weight: 600; }
+
+/* Destaque — cores iguais às do artigo publicado */
+.destaque-editor {
+  margin: 1.5rem 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+}
+.destaque-info {
+  border-color: color-mix(in oklch, var(--primary) 15%, transparent);
+  background: color-mix(in oklch, #e8ffe9 70%, transparent);
+}
+.destaque-atencao {
+  border-color: color-mix(in oklch, #653024 20%, transparent);
+  background: color-mix(in oklch, #653024 5%, white);
+}
+
+.destaque-editor-barra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.destaque-editor-barra input,
+.destaque-editor-barra select,
+.figura-editor-campos input {
+  border: 1px solid var(--input);
+  border-radius: 0.4rem;
+  background: var(--card);
+  padding: 0.3rem 0.55rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+.destaque-editor-titulo { flex: 1; min-width: 10rem; font-weight: 600; }
+.destaque-editor-barra button,
+.figura-editor-campos button {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--destructive);
+}
+
+/* Figura (imagem com legenda) */
+.figura-editor {
+  margin: 1.5rem 0;
+  padding: 0.85rem;
+  border: 1px dashed var(--input);
+  border-radius: 1rem;
+}
+.figura-editor img { max-height: 280px; margin: 0 auto 0.85rem; border-radius: 0.75rem; }
+.figura-editor-campos { display: grid; gap: 0.55rem; font-size: 0.8rem; color: var(--muted-foreground); }
+.figura-editor-campos label { display: grid; gap: 0.2rem; }
+.figura-editor-campos button { justify-self: start; }

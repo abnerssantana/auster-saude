@@ -93,11 +93,61 @@ As colunas saem dos `label` dos campos na primeira gravação. Mudar a ordem ou
 os nomes depois desalinha as linhas antigas — nesse caso, troque o nome do
 arquivo em `LEAD_FILES` para começar um CSV novo.
 
+## Blog
+
+Artigos em MDX em `/blog`, escritos pelo painel em `/admin` — editor visual,
+envio de imagens, rascunho, prévia e publicação sem novo deploy. É o mesmo
+sistema do site da Ortoteen, com login por pessoa em vez de um usuário só.
+
+### Quem entra no painel
+
+Cada pessoa em `AUTORES` ([lib/blog/config.ts](lib/blog/config.ts)) é um login
+e também quem assina os artigos (nome, cargo e bio aparecem no fim do texto).
+A senha não fica no código — o repositório é público — e sim em
+`BLOG_SENHA_<ID>`, como hash:
+
+```bash
+npm run blog:senha -- angelo             # gera uma senha aleatória
+npm run blog:senha -- angelo "minha senha"
+```
+
+O comando imprime a senha (para entregar à pessoa) e a linha
+`BLOG_SENHA_ANGELO=...`, que vai no `.env.local` e na Vercel. Trocar o hash
+derruba as sessões abertas daquela pessoa. Para incluir alguém, acrescente a
+entrada em `AUTORES` e gere a variável.
+
+| Variável | Para que serve |
+|---|---|
+| `BLOG_SESSAO_SECRET` | Assina o cookie de login. `openssl rand -hex 32` |
+| `BLOG_SENHA_ABNER`, `BLOG_SENHA_ANGELO` | Hash da senha de cada usuário |
+| `BLOG_ARMAZENAMENTO` | Opcional: `blob` ou `local` (veja abaixo) |
+
+A tela de login avisa quando falta alguma delas.
+
+### Onde ficam os artigos
+
+Na Vercel, no mesmo Blob dos leads: `blog/posts/<slug>.mdx` e
+`blog/imagens/`. O store é privado, então as imagens passam por
+`/blog/imagens/[arquivo]`. Salvar no painel regenera as páginas do blog e o
+sitemap na hora (`revalidatePath`).
+
+Fora da Vercel, em `content/blog/` (fora do git) — **mesmo com o
+`BLOB_READ_WRITE_TOKEN` no `.env.local`**, que é o de produção: um teste local
+não publica nada no site. Para trabalhar contra o Blob real, rode com
+`BLOG_ARMAZENAMENTO=blob`.
+
+Duas pessoas editando o mesmo artigo não se sobrescrevem: quem salva por
+último recebe um aviso para recarregar, em vez de apagar o texto do outro. O
+painel também recusa salvar um texto que o site não conseguiria exibir (tag
+quebrada, componente que não existe).
+
 ## Onde mexer
 
 | Quero mudar | Arquivo |
 |---|---|
 | Textos da home | [lib/content.ts](lib/content.ts) |
+| Usuários do painel, categorias e textos do blog | [lib/blog/config.ts](lib/blog/config.ts) |
+| Aparência do texto dos artigos | [components/blog/mdx-components.tsx](components/blog/mdx-components.tsx) |
 | Telefone do WhatsApp, itens do menu, domínio | [lib/site.ts](lib/site.ts) |
 | Cores, fundos das seções, animações de scroll | [app/globals.css](app/globals.css) |
 | Fontes (Fraunces + Instrument Sans) | [app/layout.tsx](app/layout.tsx) |

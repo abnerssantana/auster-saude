@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { WhatsappFloat } from "@/components/layout/whatsapp-float";
+import { SiteChrome } from "@/components/layout/site-chrome";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { JsonLd } from "@/components/json-ld";
 import {
@@ -57,10 +58,14 @@ export default function RootLayout({
       className={`${instrumentSans.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <Header />
+        <SiteChrome>
+          <Header />
+        </SiteChrome>
         <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsappFloat />
+        <SiteChrome>
+          <Footer />
+          <WhatsappFloat />
+        </SiteChrome>
         <ScrollReveal />
         <Toaster position="top-center" richColors />
         <Analytics />

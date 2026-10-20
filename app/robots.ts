@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/site";
  * A regra `*` abaixo já os liberaria, mas o robots.txt resolve por grupo mais
  * específico e sem herança: declarar cada bot deixa a intenção explícita e
  * evita que um `Disallow` futuro no `*` os derrube junto. Por isso cada grupo
- * repete o `/api/`.
+ * repete os bloqueios de DISALLOW.
  */
 const AI_SEARCH_BOTS = [
   "GPTBot", // OpenAI — indexação usada pelo ChatGPT
@@ -26,11 +26,14 @@ const AI_SEARCH_BOTS = [
   "DuckAssistBot",
 ];
 
+/* /admin é o painel do blog: já sai com noindex, isto só poupa o rastreio. */
+const DISALLOW = ["/api/", "/admin"];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: "/api/" },
-      { userAgent: AI_SEARCH_BOTS, allow: "/", disallow: "/api/" },
+      { userAgent: "*", allow: "/", disallow: DISALLOW },
+      { userAgent: AI_SEARCH_BOTS, allow: "/", disallow: DISALLOW },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

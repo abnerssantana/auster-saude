@@ -41,3 +41,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# blog: artigos e imagens criados pelo painel em desenvolvimento. Em produção
+# eles ficam no Vercel Blob (ver lib/blog/armazenamento.ts).
+/content/blog/
