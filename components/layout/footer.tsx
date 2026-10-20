@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { NAV_LINKS, SITE_NAME, WHATSAPP_URL } from "@/lib/site";
+import {
+  CRC_REGISTROS,
+  NAV_LINKS,
+  SITE_NAME,
+  WHATSAPP_URL,
+} from "@/lib/site";
 import { LOCAIS } from "@/lib/locais";
 import logoCream from "@/public/images/logo-auster-cream.svg";
 
@@ -66,10 +71,24 @@ export function Footer() {
           </ul>
         </nav>
 
-        <p className="text-xs text-cream/60">
-          © {new Date().getFullYear()} {SITE_NAME}. Todos os direitos
-          reservados.
-        </p>
+        <div className="flex flex-col items-center gap-3">
+          <ul
+            aria-label="Registros no Conselho Regional de Contabilidade"
+            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-1 text-xs text-cream/60"
+          >
+            {CRC_REGISTROS.map((r) => (
+              <li key={r.registro}>
+                <span className="font-medium text-cream/75">{r.nome}</span>
+                {r.funcao && <> – {r.funcao}</>} · {r.registro}
+              </li>
+            ))}
+          </ul>
+
+          <p className="text-xs text-cream/60">
+            © {new Date().getFullYear()} {SITE_NAME}. Todos os direitos
+            reservados.
+          </p>
+        </div>
       </div>
     </footer>
   );

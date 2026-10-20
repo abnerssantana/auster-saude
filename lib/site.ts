@@ -58,6 +58,25 @@ export function whatsappUrlFor(phone: string) {
   return `https://wa.me/${digits.length <= 11 ? `55${digits}` : digits}`;
 }
 
+/*
+ * Registros no CRC exibidos no rodapé de todas as páginas. É obrigação ética
+ * (NBC PG 01, item 4, "r"): todo anúncio, site incluso, traz nome e número de
+ * registro; para a organização contábil, a razão social com o registro da PJ.
+ */
+export const CRC_REGISTROS: { nome: string; funcao?: string; registro: string }[] = [
+  { nome: "AUSTER CONTABILIDADE MÉDICA LTDA", registro: "CRC/SC-012404/O" },
+  {
+    nome: "Severino Camilo Giacomini",
+    funcao: "Responsável Técnico",
+    registro: "CRC/SC-016794",
+  },
+  {
+    nome: "Graziela Bombassaro",
+    funcao: "Contador",
+    registro: "CRC/SC-048023",
+  },
+];
+
 export const NAV_LINKS = [
   { label: "QUEM SOMOS", href: "/#quemsomos" },
   { label: "SOLUÇÕES", href: "/#solucoes" },
