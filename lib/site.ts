@@ -77,16 +77,15 @@ export const CRC_REGISTROS: { nome: string; funcao?: string; registro: string }[
   },
 ];
 
-/** Menu do cabeçalho: curto de propósito. */
+/** Menu do cabeçalho: as âncoras da home ficam só no rodapé. */
 export const NAV_LINKS = [
   { label: "INÍCIO", href: "/" },
   { label: "APP", href: "/auster-next" },
+  { label: "QUERO SER AUSTER", href: "/quero-ser-auster" },
+  { label: "INDICAÇÕES", href: "/indicacao" },
 ] as const;
 
-/*
- * O rodapé segue com o mapa completo: é por aqui que /quero-ser-auster e
- * /indicacao continuam alcançáveis depois que saíram do cabeçalho.
- */
+/* O rodapé segue com o mapa completo, incluindo as seções da home. */
 export const FOOTER_LINKS = [
   { label: "QUEM SOMOS", href: "/#quemsomos" },
   { label: "SOLUÇÕES", href: "/#solucoes" },
